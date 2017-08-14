@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Workshop 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script src="modules/MyApp.js"></script>
+    <script src="modules/MyViews.js"></script>
+    <script src="modules/MyAPI.js"></script>
+    <script src="MyPageController.js"></script>
+    <script src="MyAPIService.js"></script>
+</head>
+<body>
+    <main ng-controller="MyPageController as vm">
+        <h1>{{ vm.title }}</h1>
+        <div class="alert alert-primary" ng-show=" ! vm.famousProgrammers">
+            <p style="text-align: center">
+                Famous programmers a loading...
+            </p>
+        </div>
+        <table class="table" ng-show=" vm.famousProgrammers">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Contribution</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="programmer in vm.famousProgrammers">
+                    <td>{{ programmer.firstName }} {{ programmer.lastName }}</td>
+                    <td>{{ programmer.knownFor }}</td>
+                    <td>{{ programmer.countryOfOrigin }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
